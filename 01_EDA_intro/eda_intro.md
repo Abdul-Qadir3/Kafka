@@ -109,14 +109,23 @@ Because events are durably stored in Kafka, they can be read as many times and b
 # Kafka UI
 This is a popular open-source web UI specifically designed for viewing Kafka topics, messages, brokers, consumer groups, and even lets you create new topics. It's known for being lightweight, easy to set up, and supports secure connections. You can find the project on Github here:
 
+### Create a network
 ```bash
 docker network create -d bridge kafka-net
+```
 
+### Network list
+```bash
 docker network ls
+```
 
+### Ryn container with nework
+```bash
 docker run -p 9092:9092 --network kafka-net --name mykafka apache/kafka:3.7.0
+```
 
+### Kafka UI
+```bash
 docker run -it -p 8080:8080 --network kafka-net -e DYNAMIC_CONFIG_ENABLED=true provectuslabs/kafka-ui
 ```
 In order to integrate kafka broker with kafkaUI use container name in the host
-
